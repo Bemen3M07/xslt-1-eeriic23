@@ -15,13 +15,16 @@
           <xsl:for-each select="catalog/cd[price &lt; 10]">
             <xsl:sort select="artist"/>
             <tr>
+              <!-- Alternar emoji usando xsl:choose para filas pares e impares -->
               <td>
-                <xsl:if test="position() mod 2 = 1">
-                  <xsl:text>&#128308;</xsl:text> <!-- Emoji 🔴 para filas impares -->
-                </xsl:if>
-                <xsl:if test="position() mod 2 = 0">
-                  <xsl:text>&#128994;</xsl:text> <!-- Emoji 🟢 para filas pares -->
-                </xsl:if>
+                <xsl:choose>
+                  <xsl:when test="position() mod 2 = 1">
+                    <xsl:text>&#128308;</xsl:text> <!-- Emoji 🔴 para filas impares -->
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:text>&#128994;</xsl:text> <!-- Emoji 🟢 para filas pares -->
+                  </xsl:otherwise>
+                </xsl:choose>
               </td>
               <td><xsl:value-of select="title"/></td>
               <td><xsl:value-of select="artist"/></td>
