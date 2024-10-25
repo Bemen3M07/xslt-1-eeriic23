@@ -17,14 +17,8 @@
             <tr>
               <!-- Alternar emoji usando xsl:choose para filas pares e impares -->
               <td>
-                <xsl:choose>
-                  <xsl:when test="position() mod 2 = 1">
-                    <xsl:text>&#128308;</xsl:text> <!-- Emoji 🔴 para filas impares -->
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:text>&#128994;</xsl:text> <!-- Emoji 🟢 para filas pares -->
-                  </xsl:otherwise>
-                </xsl:choose>
+                <xsl:when test="price &lt; 10">🟢</xsl:when>
+                <xsl:when test="price &gt; 10">🔴</xsl:when>
               </td>
               <td><xsl:value-of select="title"/></td>
               <td><xsl:value-of select="artist"/></td>
